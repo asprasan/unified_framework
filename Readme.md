@@ -13,11 +13,11 @@ This repository contains the official implementation of the work **A Unified Fra
 We provide evaluation code for three different and important models in the paper.
 We provide the DNN test set (described in the paper) for evaluation, in the ```data``` directory.
 
-- Flutter shutter for 16x reconstruction : [download model](#)
-- Pixel wise coded exposure for 16x reconstruction : [download model](#)
-- Coded-Blurred pair for 16x reconstruction: [download model](#)
+- Flutter shutter for 16x reconstruction : [download model](https://drive.google.com/file/d/1pQFYgTXUvbw8tH2Na6OB4RtlRz9qKTEQ/view?usp=sharing)
+- Pixel wise coded exposure for 16x reconstruction : [download model](https://drive.google.com/file/d/1pEpvNK1prk9gvLZPvEimKg0em0ofbnKi/view?usp=sharing)
+- Coded-Blurred pair for 16x reconstruction: [download model](https://drive.google.com/file/d/1aIhaMVqMjLkCVVjLH4eq_ilaQH5dQncC/view?usp=sharing)
 
-Download the appropriate model file (.pth extension) from the links provided above and copy them to the ```models``` directory
+Download the appropriate model file from the links provided above and copy them to the ```models``` directory. The files are compressed in ```.tar.xz``` format which can be extracted by ```tar -xvf <filename>```.
 
 1. Evaluating flutter shutter model:
 
