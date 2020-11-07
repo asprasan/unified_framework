@@ -13,9 +13,9 @@ This repository contains the official implementation of the work **A Unified Fra
 We provide evaluation code for three different and important models in the paper.
 We provide the DNN test set (described in the paper) for evaluation, in the ```data``` directory.
 
-- Flutter shutter for 16x reconstruction : [download model](https://drive.google.com/file/d/1pQFYgTXUvbw8tH2Na6OB4RtlRz9qKTEQ/view?usp=sharing)
-- Pixel wise coded exposure for 16x reconstruction : [download model](https://drive.google.com/file/d/1pEpvNK1prk9gvLZPvEimKg0em0ofbnKi/view?usp=sharing)
-- Coded-Blurred pair for 16x reconstruction: [download model](https://drive.google.com/file/d/1aIhaMVqMjLkCVVjLH4eq_ilaQH5dQncC/view?usp=sharing)
+- Flutter shutter for 16x reconstruction : [download model](https://drive.google.com/file/d/1ljGjzj21pGP9x00-tLcIDCHb1T1WOY8B/view?usp=sharing)
+- Pixel wise coded exposure for 16x reconstruction : [download model](https://drive.google.com/file/d/1DuglqaRXM4u-6w_OJv7bi-FI1eOD_VPF/view?usp=sharing)
+- Coded-Blurred pair for 16x reconstruction: [download model](https://drive.google.com/file/d/1fNyZddBDGUq1xRhDuOOEjrn0e92Z56hs/view?usp=sharing)
 
 Download the appropriate model file from the links provided above and copy them to the ```models``` directory. The files are compressed in ```.tar.xz``` format which can be extracted by ```tar -xvf <filename>```.
 
@@ -24,7 +24,9 @@ Download the appropriate model file from the links provided above and copy them 
 ```python infer_h5.py --ckpt flutter_optimal.pth --gpu 0 --save_gif --flutter```
 
 2. Evaluating the pixel-wise exposure model:
+
 ```python infer_h5.py --ckpt pixel_optimal.pth --gpu 0 --save_gif```
 
 3. Evaluating the pixel-wise exposure model:
+
 ```python infer_h5.py --ckpt c2b_optimal.pth --gpu 0 --save_gif --two_bucket```

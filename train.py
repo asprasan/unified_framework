@@ -81,8 +81,16 @@ logging.info(args)
 
 
 ## dataloaders using hdf5 file
-data_path = '/data/prasan/anupama/dataset/GoPro_patches_ds2_s%d-%d_p64-32.hdf5'%(args.subframes,args.subframes//2)
+data_path = None
 
+
+try:
+    assert data_path is not None
+except AssertionError:
+    print('path to hdf5 data not specified')
+    print('hdf5 data should contain two datasets train and test')
+    print('++++exiting++++')
+    exit(0)
 
 ## initializing training and validation data generators
 training_set = Dataset_load(data_path, dataset='train', num_samples='all')
@@ -115,22 +123,7 @@ optimizer = torch.optim.Adam(list(invNet.parameters())+list(uNet.parameters()),
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.9, 
                                                         patience=5, min_lr=1e-6, verbose=True)
 
-## load checkpoint
-if args.ckpt is None:
-    start_epoch = 0
-    logging.info('No checkpoint, training from scratch')
-else:
-    ckpt = torch.load(os.path.join(save_path, 'model', args.ckpt))
-    c2b.load_state_dict(ckpt['c2b_state_dict'])
-    invNet.load_state_dict(ckpt['invnet_state_dict'])
-    uNet.load_state_dict(ckpt['unet_state_dict'])
-    optimizer.load_state_dict(ckpt['opt_state_dict'])
-    start_epoch = ckpt['epoch'] + 1
-    c2b.eval()
-    invNet.train()
-    uNet.train()
-    logging.info('Loaded checkpoint from %s'%(args.ckpt))
-# torch.save(c2b.code, os.path.join(save_path, 'model', 'exposure_code.pth'))
+start_epoch = 0
 
 
 logging.info('Starting training')

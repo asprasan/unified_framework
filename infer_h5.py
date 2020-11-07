@@ -19,7 +19,6 @@ from inverse import ShiftVarConv2D, StandardConv2D
 
 ## parse arguments
 parser = argparse.ArgumentParser()
-# parser.add_argument('--expt', type=str, required=True, help='expt name for inference')
 parser.add_argument('--savedir', type=str, default='results' ,help='export dir name to dump results')
 parser.add_argument('--ckpt', type=str, required=True, help='checkpoint full name')
 parser.add_argument('--blocksize', type=int, default=8, help='tile size for code default 3x3')
@@ -32,7 +31,6 @@ parser.add_argument('--intermediate', action='store_true', help="intermediate re
 parser.add_argument('--flutter', action='store_true', help="for flutter shutter")
 
 args = parser.parse_args()
-# print(args)
 
 os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 
@@ -47,7 +45,7 @@ logging.basicConfig(level=logging.INFO,
                     filename=os.path.join(save_path, 'logfile.log'), 
                     format='%(asctime)s - %(message)s', 
                     filemode='w')
-# logger=logging.getLogger()#.setLevel(logging.INFO)
+
 console = logging.StreamHandler()
 console.setLevel(logging.INFO)
 console.setFormatter(logging.Formatter('%(asctime)s - %(message)s'))
@@ -101,18 +99,11 @@ with torch.no_grad():
         image_paths = f['test']
         print(f'testing on data of size {image_paths.shape}')
         for seq in range(len(image_paths)):
-            # vid = []
-            # for sub_frame in range(args.subframes):
-            #     img = utils.read_image(image_paths[seq*args.subframes+sub_frame], input_params['height'], input_params['width'])
-            #     vid.append(torch.cuda.FloatTensor(img))
-            # vid = torch.stack(vid, dim=0).unsqueeze(0)
             vid = torch.cuda.FloatTensor(image_paths[seq:seq+1,...])
             b1 = torch.sum(code_repeat*vid, dim=1, keepdim=True) / torch.sum(code_repeat, dim=1, keepdim=True)
-            # b1 = torch.mean(vid, dim=1, keepdim=True)
             if not args.two_bucket:
                 interm_vid = invNet(b1) 
             else:
-                # b0 = torch.sum((1-code_repeat)*vid, dim=1, keepdim=True) / torch.sum(1-code_repeat, dim=1, keepdim=True)
                 b0 = torch.mean(vid, dim=1, keepdim=True)
                 b_stack = torch.cat([b1,b0], dim=1)
                 interm_vid = invNet(b_stack)
@@ -120,28 +111,21 @@ with torch.no_grad():
             
             assert highres_vid.shape == vid.shape
             highres_vid = torch.clamp(highres_vid, min=0, max=1)
-            # for sf in range(highres_vid.shape[1]):
-            #     highres_vid[:,sf,:,:] = (highres_vid[:,sf,:,:]-torch.min(highres_vid[:,sf,:,:]))\
-            #                                 /(torch.max(highres_vid[:,sf,:,:])-torch.min(highres_vid[:,sf,:,:]))
-
+            
             ## converting tensors to numpy arrays
             b1_np = b1.squeeze().data.cpu().numpy() # (H,W)
             if args.two_bucket:
                 b0_np = b0.squeeze().data.cpu().numpy()
             vid_np = vid.squeeze().data.cpu().numpy() # (9,H,W)
-            # interm_np = interm_vid.squeeze().data.cpu().numpy()
             highres_np = highres_vid.squeeze().data.cpu().numpy() # (9,H,W)
-            # code_np = c2b_code.squeeze().data.cpu().numpy()
             full_pred.append(highres_np)
             full_gt.append(vid_np)
 
             ## psnr
-            # psnr = compute_psnr(highres_vid, vid).item()
             psnr = compare_psnr(highres_np, vid_np)
             psnr_sum += psnr
 
             ## ssim
-            # ssim = compute_ssim(highres_vid, vid).item()
             ssim = 0.
             for sf in range(vid_np.shape[0]):
                 ssim += compare_ssim(highres_np[sf], vid_np[sf], 
@@ -157,13 +141,9 @@ with torch.no_grad():
                     if args.two_bucket:
                         utils.save_image(b0_np, os.path.join(save_path, 'seq_%.2d_complement.png'%(seq+1)))
                     utils.save_gif(vid_np, os.path.join(save_path, 'seq_%.2d_gt.gif'%(seq+1)))
-                    # utils.save_gif(interm_np, os.path.join(save_path, 'seq_%.2d_intermediate.gif'%(seq+1)))
                     utils.save_gif(highres_np, os.path.join(save_path, 'seq_%.2d_recon.gif'%(seq+1)))
-                    # save_gif(np_arr=np.concatenate((vid_np, highres_np), axis=2), 
-                    #          path=os.path.join(save_path, 'seq_%.2d_groundTruth-highRes.gif'%(seq+1)))
                     for sub_frame in range(vid_np.shape[0]):
                         utils.save_image(highres_np[sub_frame], os.path.join(save_path, 'frames', 'seq_%.2d_recon_%.2d.png'%(seq+1, sub_frame+1)))
-                        # utils.save_image(vid_np[sub_frame], os.path.join(save_path, 'frames', 'seq_%.2d_gt_%.1d.png'%(seq+1, sub_frame+1)))
 
         logging.info('Average PSNR: %.2f'%(psnr_sum/(len(image_paths))))
         logging.info('Average SSIM: %.3f'%(ssim_sum/(len(image_paths))))
@@ -175,11 +155,5 @@ with torch.no_grad():
             print(f'shape of full_gt:{full_gt.shape} and full_pred:{full_pred.shape}')
             write.create_dataset('gt',data=full_gt,compression='gzip')
             write.create_dataset('pred',data=full_pred,compression='gzip')
-        
-        # code_np = c2b_code.squeeze().data.cpu().numpy()
-        # np.save(os.path.join(save_path, 'exposure_code'), code_np)
-        # code_vis = np.repeat(np.repeat(code_np, 50, axis=2), 50, axis=1)
-        # utils.save_gif(code_vis, os.path.join(save_path, 'exposure_code.gif'))
-
 
 logging.info('Finished inference')
