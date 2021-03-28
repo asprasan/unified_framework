@@ -1,0 +1,364 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script> 
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight:300;
+		font-size:18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+	
+	h1 {
+		font-size:32px;
+		font-weight:300;
+	}
+	
+	.disclaimerbox {
+		background-color: #eee;		
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	a:link,a:visited
+	{
+		color: #1367a7;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #208799;
+	}
+	
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+	
+	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+		15px 15px 0 0px #fff, /* The fourth layer */
+		15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+		20px 20px 0 0px #fff, /* The fifth layer */
+		20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+		25px 25px 0 0px #fff, /* The fifth layer */
+		25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+	
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	hr
+	{
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<html>
+<head>
+	<title>A Unified Framework for Compressive Video Recovery from Coded Exposure Techniques</title>
+	<meta property="og:image" content="resources/unified_teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="Creative and Descriptive Paper Title." />
+	<meta property="og:description" content="Paper description." />
+
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script> 
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:36px">A Unified Framework for Compressive Video Recovery from Coded Exposure Techniques</span>
+		<table align=center width=600px>
+			<table align=center width=600px>
+				<tr>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="https://asprasan.github.io">Prasan Shedligeri</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px">Anupama S</span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="http://www.ee.iitm.ac.in/kmitra/">Kaushik Mitra</a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table align=center width=250px>
+				<tr>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:24px"><a href='https://arxiv.org/abs/2011.05532'>[Paper]</a></span>
+						</center>
+					</td>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:24px"><a href='https://github.com/asprasan/unified_framework'>[GitHub]</a></span><br>
+						</center>
+					</td>
+				</tr>
+			</table>
+		</table>
+	</center>
+
+	<center>
+		<table align=center width=850px>
+			<tr>
+				<td width=260px>
+					<center>
+						<img class="round" style="width:500px" src="./resources/unified_teaser.png"/>
+					</center>
+				</td>
+			</tr>
+		</table>
+		<!-- <table align=center width=850px>
+			<tr>
+				<td>
+					This was a template originally made for <a href="http://richzhang.github.io/colorization/">Colorful Image Colorization</a>. The code can be found in this <a href="https://github.com/richzhang/webpage-template">repository</a>.
+				</td>
+			</tr>
+		</table> -->
+	</center>
+
+	<hr>
+
+	<table align=center width=850px>
+		<center><h1>Abstract</h1></center>
+		<tr>
+			<td align=justify>
+				Several coded exposure techniques have been proposed for acquiring high frame rate videos at low bandwidth.
+				Most recently, a Coded-2-Bucket camera has been proposed that can acquire two compressed measurements in a single exposure, unlike previously proposed coded exposure techniques, which can acquire only a single measurement.
+				Although two measurements are better than one for an effective video recovery, we are yet unaware of the clear advantage of two measurements, either quantitatively or qualitatively.
+				Here, we propose a unified learning-based framework to make such a qualitative and quantitative comparison between those which capture only a single coded image (Flutter Shutter, Pixel-wise coded exposure) and those that capture two measurements per exposure (C2B).
+				Our learning-based framework consists of a shift-variant convolutional layer followed by a fully convolutional deep neural network.
+				Our proposed unified framework achieves the state of the art reconstructions in all three sensing techniques.
+				Further analysis shows that when most scene points are static, the C2B sensor has a significant advantage over acquiring a single pixel-wise coded measurement. 
+				However, when most scene points undergo motion, the C2B sensor has only a marginal benefit over the single pixel-wise coded exposure measurement.
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+	<center><h1>Talk</h1></center>
+	<p align="center">
+		<iframe width="660" height="395" src="https://www.youtube.com/embed/Ncoq4XRi6WU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen align="center"></iframe>
+	</p>
+
+	<table align=center width=800px>
+		<br>
+		<tr>
+			<center>
+				<span style="font-size:28px"><a href='https://docs.google.com/presentation/d/1TqyRWTtNqIssMJ_nnHTTNLNbdP_oMqGtBlgvnaNTcYI/edit?usp=sharing'>[Slides]</a>
+				</span>
+			</center>
+		</tr>
+	</table>
+	<hr>
+
+	<center><h1>Key takeaways</h1></center>
+
+	<table align=center width=800px>
+		<center>
+			<tr>
+				<td>
+					<li>
+					Shift variant convolutional layer can be used as an efficient structure for extracting feataures from coded-exposure images
+					</li>
+					<li>
+						Proposed algorithm makes extensive quantitative and qualitative comparison for various coded exposure techniques.
+					</li>
+					<li>
+						Coded-2-bucket sensor provides a significant advantage over the single pixel-wise coded exposure only when most scene points are static.
+					</li>
+				</td>
+			</tr>
+		</center>
+	</table>
+
+	<hr>
+
+	<center><h1>Code</h1></center>
+
+	<!-- <table align=center width=640px>
+		<center>
+			<tr>
+				<td>
+
+				</td>
+			</tr>
+		</center>
+	</table> -->
+	<table align=center width=600px>
+		<tr>
+			<td align=center width=600px>
+				<center>
+					<td><img class="round" style="width:600px" src="./resources/method_diagram.png"/></td>
+				</center>
+			</td>
+		</tr>
+	</table>
+	<table align=center width=850px>
+		<center>
+			<tr>
+				<td align=justify>
+					We propose an unified algorithm for reconstruction of video sequences from three different coded exposure techniques: flutter shutter, pixel-wise coded exposure and coded-2-bucket sensor.
+					The unified framework has 2 main parts: an exposure-aware feature extraction stage and a refinement stage.
+					A shift-variant convolutional layer extracts features from the input coded exposure image(s).
+					The refinement stage then takes this features as input and outputs the full video sequence.
+				</td>
+			</tr>
+		</center>
+	</table>
+	<table align=center width=800px>
+		<br>
+		<tr><center>
+			<span style="font-size:28px">&nbsp;<a href='https://github.com/asprasan/unified_framework'>[GitHub]</a>
+			</center>
+		</span>
+	</table>
+	<br>
+	<hr>
+	<table align=center width=450px>
+		<center><h1>Paper and Supplementary Material</h1></center>
+		<tr>
+			<td><a href=""><img class="layered-paper-big" style="height:175px" src="./resources/paper.png"/></a></td>
+			<td><span style="font-size:14pt">P. Shedligeri, Anupama S., Kaushik Mitra<br>
+				<b>A Unified Framework for Compressive Video Recovery from Coded Exposure Techniques</b><br>
+				In WACV, 2021.<br>
+				(hosted on <a href="https://arxiv.org/abs/2011.05532">ArXiv</a>, <a href="https://openaccess.thecvf.com/content/WACV2021/papers/Shedligeri_A_Unified_Framework_for_Compressive_Video_Recovery_From_Coded_Exposure_WACV_2021_paper.pdf">CVF OpenAccess</a>)<br>
+				<!-- (<a href="./resources/camera-ready.pdf">camera ready</a>)<br> -->
+				<span style="font-size:4pt"><a href=""><br></a>
+				</span>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+	<table align=center width=300px>
+		<tr>
+			<td align=center><span style="font-size:14pt">
+				<a href="https://drive.google.com/file/d/1GGpgzTGXnE1XzONJOv81iK23TVIfkAvB/view?usp=sharing">[Supplementary Material]</a></td>
+			<td align=center ><span style="font-size:14pt">
+				<a href="./resources/bibtex.txt">[Bibtex]</a></td>
+		</tr>
+	</table>
+
+	<hr>
+	<br>
+
+	<center><h1>Related Publications</h1></center>
+
+	<table align=center width=900px>
+		<center>
+			<tr>
+				<td>
+					<li>Anupama S, <b>Prasan Shedligeri</b>, Abhishek Pal & Kaushik Mitra. (2020) Video Reconstruction by Spatio-Temporal Fusion of Blurred-Coded Image Pair. Accepted at <em>IEEE International Conference on Pattern Recognition,</em> doi to be assigned 
+	               <a href="https://arxiv.org/abs/2010.10052">[Preprint]</a>
+	               <a href="https://docs.google.com/presentation/d/1VxjBlD70bW-hMiSQlJLm6akre9zi0_Ob6bt6pZO5EdE/edit?usp=sharing">[Slides]</a>
+	               <a href="https://drive.google.com/file/d/1u99_tjrFW56qvVXm46CmA-zBOvI1-56o/view?usp=sharing">[Supplementary]</a>
+	               <a href="https://github.com/asprasan/codedblurred">[Code]</a>
+	           		</li>
+
+	           		<li><b>Prasan Shedligeri</b>, Anupama S & Kaushik Mitra. (2021) CodedRecon: Video reconstruction for coded exposure imaging techniques. Accepted at <em>Elsevier Journal of Software Impacts,</em> doi to be assigned 
+	            	<a href="https://www.sciencedirect.com/science/article/pii/S2665963821000129">[Paper]</a>
+	            	<a href="https://github.com/asprasan/unified_framework">[Code]</a></li>
+				</td>
+			</tr>
+		</center>
+	</table>
+
+	<hr>
+
+	<table align=center width=900px>
+		<tr>
+			<td width=400px>
+				<left>
+					<center><h1>Acknowledgements</h1></center>
+					The authors would like to thank <a href="https://sreyas-mohan.github.io/">Sreyas Mohan</a> and <a href="https://subeeshvasu.github.io/">Subeesh Vasu</a> for their helpful discussions.
+					<br>
+					This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a> for a <a href="http://richzhang.github.io/colorization/">colorful</a> ECCV project; the code can be found <a href="https://github.com/richzhang/webpage-template">here</a>.
+				</left>
+			</td>
+		</tr>
+	</table>
+
+<br>
+</body>
+</html>
+

@@ -1,0 +1,7 @@
+@inproceedings{shedligeri2020unified,
+  title={A Unified Framework for Compressive Video Recovery from Coded Exposure Techniques},
+  author={Shedligeri, Prasan and Anupama, S and Mitra, Kaushik},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={1600--1609},
+  year={2020}
+}
