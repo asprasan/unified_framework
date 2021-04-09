@@ -119,9 +119,9 @@
 <html>
 <head>
 	<title>A Unified Framework for Compressive Video Recovery from Coded Exposure Techniques</title>
-	<meta property="og:image" content="resources/unified_teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
-	<meta property="og:title" content="Creative and Descriptive Paper Title." />
-	<meta property="og:description" content="Paper description." />
+	<meta property="og:image" content="resources/images/seq_03_coded.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="A Unified Framework for Compressive Video Recovery from Coded Exposure Techniques" />
+	<meta property="og:description" content="We propose an unified algorithm for reconstruction of video sequences from three different coded exposure techniques: flutter shutter, pixel-wise coded exposure and coded-2-bucket sensor." />
 
 	<!-- Get from Google Analytics -->
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -177,22 +177,48 @@
 	</center>
 
 	<center>
-		<table align=center width=850px>
-			<tr>
-				<td width=260px>
-					<center>
-						<img class="round" style="width:500px" src="./resources/unified_teaser.png"/>
-					</center>
-				</td>
-			</tr>
+		<style type="text/css">
+		.tg  {border:none;border-collapse:collapse;border-spacing:0;}
+		.tg td{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;
+		  padding:5px 5px;word-break:normal;}
+		.tg th{border-style:solid;border-width:0px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;
+		  overflow:hidden;padding:10px 5px;word-break:normal;}
+		.tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+		</style>
+		<table class="tg">
+		<thead>
+		  <tr>
+		    <th class="tg-9wq8"></th>
+		    <th class="tg-9wq8">Flutter<br>Shutter (8x)</th>
+		    <th class="tg-9wq8">Pixel-wise coded<br>exposure (16x)</th>
+		    <th class="tg-9wq8">C2B (16x)<br></th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td class="tg-9wq8"><SPAN STYLE="writing-mode: vertical-lr;
+                     -ms-writing-mode: tb-rl;
+                     transform: rotate(180deg);">Input</SPAN></td>
+		    <td class="tg-9wq8"><img src="./resources/images/seq_03_flutter.png" width="150" height="150"></td>
+		    <td class="tg-9wq8"><img src="./resources/images/seq_03_coded.png" width="150" height="150"></td>
+		    <td class="tg-9wq8"><img src="./resources/images/seq_03_coded_blurred.png" width="150" height="150"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-9wq8"><SPAN STYLE="writing-mode: vertical-lr;
+                     -ms-writing-mode: tb-rl;
+                     transform: rotate(180deg);">Reconstruction</SPAN></td>
+		    <td class="tg-9wq8"><img src="./resources/images/flutter.gif" width="150" height="150"></td>
+		    <td class="tg-9wq8"><img src="./resources/images/single.gif" width="150" height="150"></td>
+		    <td class="tg-9wq8"><img src="./resources/images/c2b.gif" width="150" height="150"></td>
+		  </tr>
+		  <tr>
+		    <td class="tg-9wq8"></td>
+		    <td class="tg-9wq8">PSNR / SSIM <br> 27.82dB / 0.908</td>
+		    <td class="tg-9wq8">PSNR / SSIM <br> 32.29dB / 0.946</td>
+		    <td class="tg-9wq8">PSNR / SSIM <br> <span style="font-weight:bold">34.65dB / 0.972</span></td>
+		  </tr>
+		</tbody>
 		</table>
-		<!-- <table align=center width=850px>
-			<tr>
-				<td>
-					This was a template originally made for <a href="http://richzhang.github.io/colorization/">Colorful Image Colorization</a>. The code can be found in this <a href="https://github.com/richzhang/webpage-template">repository</a>.
-				</td>
-			</tr>
-		</table> -->
 	</center>
 
 	<hr>
@@ -238,7 +264,7 @@
 			<tr>
 				<td>
 					<li>
-					Shift variant convolutional layer can be used as an efficient structure for extracting feataures from coded-exposure images
+						Shift variant convolutional layer can be used as an efficient structure for extracting feataures from coded-exposure images
 					</li>
 					<li>
 						Proposed algorithm makes extensive quantitative and qualitative comparison for various coded exposure techniques.
